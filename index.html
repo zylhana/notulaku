@@ -28,6 +28,9 @@
             color: #000;
             line-height: 1.4;
         }
+        .doc-table thead {
+            display: table-header-group;
+        }
         .doc-table th, .doc-table td {
             border: 1px solid #000;
             padding: 6px 8px;
@@ -138,14 +141,12 @@
                     <div>
                         <label class="block font-medium text-slate-700 mb-1">Nama Pemberi Pernyataan</label>
                         <input type="text" id="inPemberiNama" placeholder="Contoh: H. Ahmad Fauzi, S.Ag." class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
-                        <!-- Rekomendasi 4 isian terakhir Nama -->
                         <div id="recentNamaContainer" class="flex flex-wrap gap-1.5 mt-1.5"></div>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
                             <label class="block font-medium text-slate-700 mb-1">Jabatan / Unsur</label>
                             <input type="text" id="inPemberiJabatan" placeholder="Contoh: Kepala KUA Kec. Pasangkayu" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
-                            <!-- Rekomendasi 4 isian terakhir Jabatan -->
                             <div id="recentJabatanContainer" class="flex flex-wrap gap-1.5 mt-1.5"></div>
                         </div>
                         <div>
@@ -218,7 +219,7 @@
 2. Dokumentasi Kegiatan</textarea>
                     </div>
 
-                    <!-- Unggah Lampiran 1: Daftar Hadir (Multi-file) -->
+                    <!-- Unggah Lampiran 1: Daftar Hadir -->
                     <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
                         <label class="block font-semibold text-slate-700 text-xs uppercase tracking-wider">
                             <i class="fas fa-clipboard-list text-emerald-600 mr-1"></i> Lampiran 1: Daftar Hadir (JPG / PDF - Bisa lebih dari 1 file)
@@ -227,7 +228,7 @@
                         <div id="listDaftarHadir" class="space-y-1.5"></div>
                     </div>
 
-                    <!-- Unggah Lampiran 2: Dokumentasi Kegiatan (Multi-file) -->
+                    <!-- Unggah Lampiran 2: Dokumentasi Kegiatan -->
                     <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
                         <label class="block font-semibold text-slate-700 text-xs uppercase tracking-wider">
                             <i class="fas fa-camera text-emerald-600 mr-1"></i> Lampiran 2: Dokumentasi Kegiatan (JPG / PDF - Bisa lebih dari 1 file)
@@ -268,9 +269,9 @@
                     
                     <!-- KOP SURAT DENGAN LOGO KEMENAG -->
                     <div class="kop-surat border-b-4 border-double border-black pb-3 mb-5 flex items-center gap-4">
-                        <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center">
+                        <div id="logoKemenagWrapper" class="w-20 h-20 flex-shrink-0 flex items-center justify-center">
                             <!-- Logo Resmi Kementerian Agama RI -->
-                            <svg viewBox="0 0 220 205" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                            <svg id="logoKemenagSvg" width="80" height="75" viewBox="0 0 220 205" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                                 <polygon points="110,6 212,78 173,198 47,198 8,78" fill="#0B6618" stroke="#FCE300" stroke-width="8" stroke-linejoin="miter"/>
                                 <polygon points="110,12 206,80 169,193 51,193 14,80" fill="none" stroke="#000000" stroke-width="1.5"/>
                                 <polygon points="110,33 114.5,46 128,46 117,54 121,67 110,59 99,67 103,54 92,46 105.5,46" fill="#F4C400" stroke="#000000" stroke-width="1"/>
@@ -1203,7 +1204,35 @@
             showToast('File Excel berhasil diunduh!');
         }
 
-        // ==================== EKSPOR PDF (.PDF + GABUNG LAMPIRAN PDF) ====================
+        // ==================== EKSPOR PDF (.PDF + KONVERSI LOGO + GABUNG LAMPIRAN) ====================
+
+        function convertSvgToPngDataUrl(svgElement, width = 240, height = 224) {
+            return new Promise((resolve) => {
+                try {
+                    const serializer = new XMLSerializer();
+                    const svgString = serializer.serializeToString(svgElement);
+                    const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+                    const url = URL.createObjectURL(svgBlob);
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        URL.revokeObjectURL(url);
+                        resolve(canvas.toDataURL('image/png'));
+                    };
+                    img.onerror = function() {
+                        URL.revokeObjectURL(url);
+                        resolve(null);
+                    };
+                    img.src = url;
+                } catch (e) {
+                    resolve(null);
+                }
+            });
+        }
 
         async function exportToPDF() {
             if (typeof html2pdf === 'undefined') {
@@ -1213,17 +1242,49 @@
 
             showToast('Sedang menyiapkan dokumen PDF...', 'info');
             const element = document.getElementById('documentPreviewArea');
+            const logoWrapper = document.getElementById('logoKemenagWrapper');
+            const originalLogoHtml = logoWrapper.innerHTML;
+
             const hariTanggal = document.getElementById('inHariTanggal').value.trim() || 'Dokumen';
             const safeDate = hariTanggal.replace(/[^a-zA-Z0-9]/g, '_').replace(/_+/g, '_');
             const fileName = `Notula_Rapat_KUA_${safeDate}.pdf`;
 
+            // 1. Konversi logo SVG ke PNG sementara agar muncul tajam di PDF
+            const svgEl = document.getElementById('logoKemenagSvg');
+            if (svgEl) {
+                const pngUrl = await convertSvgToPngDataUrl(svgEl, 240, 224);
+                if (pngUrl) {
+                    logoWrapper.innerHTML = `<img src="${pngUrl}" style="width: 80px; height: 75px; object-fit: contain;" alt="Logo Kemenag">`;
+                }
+            }
+
+            // 2. Sesuaikan ukuran & hilangkan padding ganda saat cetak PDF agar proporsi sama persis dengan pratinjau
+            const prevStyles = {
+                padding: element.style.padding,
+                boxShadow: element.style.boxShadow,
+                minHeight: element.style.minHeight,
+                width: element.style.width,
+                maxWidth: element.style.maxWidth
+            };
+
+            element.style.padding = '0';
+            element.style.boxShadow = 'none';
+            element.style.minHeight = 'auto';
+            element.style.width = '186mm';
+            element.style.maxWidth = '186mm';
+
             const opt = {
-                margin: [10, 10, 10, 10],
+                margin: [12, 12, 12, 12],
                 filename: fileName,
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true },
+                html2canvas: {
+                    scale: 2,
+                    useCORS: true,
+                    scrollX: 0,
+                    scrollY: 0
+                },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+                pagebreak: { mode: ['css', 'legacy'], avoid: ['.break-inside-avoid'] }
             };
 
             try {
@@ -1272,6 +1333,14 @@
             } catch (err) {
                 console.error(err);
                 showToast('Terjadi kesalahan saat membuat PDF: ' + err.message, 'error');
+            } finally {
+                // Kembalikan tampilan pratinjau ke kondisi semula
+                logoWrapper.innerHTML = originalLogoHtml;
+                element.style.padding = prevStyles.padding;
+                element.style.boxShadow = prevStyles.boxShadow;
+                element.style.minHeight = prevStyles.minHeight;
+                element.style.width = prevStyles.width;
+                element.style.maxWidth = prevStyles.maxWidth;
             }
         }
 
