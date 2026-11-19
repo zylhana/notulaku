@@ -26,7 +26,11 @@
         .doc-body {
             font-family: 'Times New Roman', Times, serif;
             color: #000;
-            line-height: 1.4;
+            line-height: 1.42;
+        }
+        .doc-table {
+            border-collapse: collapse;
+            width: 100%;
         }
         .doc-table thead {
             display: table-header-group;
@@ -101,35 +105,35 @@
                 <div class="space-y-3 text-sm">
                     <div>
                         <label class="block font-medium text-slate-700 mb-1">Hari / Tanggal</label>
-                        <input type="text" id="inHariTanggal" oninput="updatePreview()" placeholder="Contoh: Jumat, 13 November 2026" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none">
+                        <input type="text" id="inHariTanggal" oninput="handleFormChange()" placeholder="Contoh: Jumat, 13 November 2026" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none">
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
                             <label class="block font-medium text-slate-700 mb-1">Waktu</label>
-                            <input type="text" id="inWaktu" oninput="updatePreview()" placeholder="09.00 WITA - Selesai" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
+                            <input type="text" id="inWaktu" oninput="handleFormChange()" placeholder="09.00 WITA - Selesai" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
                         </div>
                         <div>
                             <label class="block font-medium text-slate-700 mb-1">Tempat</label>
-                            <input type="text" id="inTempat" oninput="updatePreview()" placeholder="Aula Kemenag Pasangkayu" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
+                            <input type="text" id="inTempat" oninput="handleFormChange()" placeholder="Aula Kemenag Pasangkayu" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
                         </div>
                     </div>
                     <div>
                         <label class="block font-medium text-slate-700 mb-1">Agenda Rapat</label>
-                        <textarea id="inAgenda" rows="2" oninput="updatePreview()" placeholder="Evaluasi Layanan Nikah/Rujuk & Pelaporan BOP KUA..." class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"></textarea>
+                        <textarea id="inAgenda" rows="2" oninput="handleFormChange()" placeholder="Evaluasi Layanan Nikah/Rujuk & Pelaporan BOP KUA..." class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"></textarea>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
                             <label class="block font-medium text-slate-700 mb-1">Pimpinan Rapat</label>
-                            <input type="text" id="inPimpinan" oninput="updatePreview()" placeholder="Nama & Jabatan" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
+                            <input type="text" id="inPimpinan" oninput="handleFormChange()" placeholder="Nama & Jabatan" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
                         </div>
                         <div>
                             <label class="block font-medium text-slate-700 mb-1">Notulis</label>
-                            <input type="text" id="inNotulis" oninput="updatePreview()" placeholder="Nama & Jabatan" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
+                            <input type="text" id="inNotulis" oninput="handleFormChange()" placeholder="Nama & Jabatan" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
                         </div>
                     </div>
                     <div>
                         <label class="block font-medium text-slate-700 mb-1">Peserta Rapat</label>
-                        <textarea id="inPeserta" rows="2" oninput="updatePreview()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">Kepala Seksi Bimas Islam, Para Kepala KUA Kecamatan se-Kabupaten Pasangkayu, Penghulu, Penyuluh Agama Islam, dan Staf Seksi Bimas Islam (Daftar hadir terlampir)</textarea>
+                        <textarea id="inPeserta" rows="2" oninput="handleFormChange()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">Kepala Seksi Bimas Islam, Para Kepala KUA Kecamatan se-Kabupaten Pasangkayu, Penghulu, Penyuluh Agama Islam, dan Staf Seksi Bimas Islam (Daftar hadir terlampir)</textarea>
                     </div>
                 </div>
             </div>
@@ -195,31 +199,31 @@
                 <div class="space-y-3 text-sm">
                     <div>
                         <label class="block font-medium text-slate-700 mb-1">Tanggal Pengesahan (Pasangkayu, ...)</label>
-                        <input type="text" id="inTglPengesahan" oninput="updatePreview()" placeholder="13 November 2026" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
+                        <input type="text" id="inTglPengesahan" oninput="handleFormChange()" placeholder="13 November 2026" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
                             <label class="block font-medium text-slate-700 mb-1">Nama Kepala Seksi Bimas Islam</label>
-                            <input type="text" id="inKasiNama" oninput="updatePreview()" placeholder="Nama Lengkap & Gelar" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
+                            <input type="text" id="inKasiNama" oninput="handleFormChange()" placeholder="Nama Lengkap & Gelar" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
                         </div>
                         <div>
                             <label class="block font-medium text-slate-700 mb-1">NIP Kepala Seksi</label>
-                            <input type="text" id="inKasiNip" oninput="updatePreview()" placeholder="197501012000031001" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
+                            <input type="text" id="inKasiNip" oninput="handleFormChange()" placeholder="197501012000031001" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
                         </div>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
                             <label class="block font-medium text-slate-700 mb-1">Nama Notulis (Tanda Tangan)</label>
-                            <input type="text" id="inNotulisTtdNama" oninput="updatePreview()" placeholder="Nama Lengkap & Gelar" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
+                            <input type="text" id="inNotulisTtdNama" oninput="handleFormChange()" placeholder="Nama Lengkap & Gelar" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
                         </div>
                         <div>
                             <label class="block font-medium text-slate-700 mb-1">NIP Notulis</label>
-                            <input type="text" id="inNotulisTtdNip" oninput="updatePreview()" placeholder="198505052010012005" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
+                            <input type="text" id="inNotulisTtdNip" oninput="handleFormChange()" placeholder="198505052010012005" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">
                         </div>
                     </div>
                     <div>
                         <label class="block font-medium text-slate-700 mb-1">Keterangan Lampiran (Teks)</label>
-                        <textarea id="inLampiran" rows="2" oninput="updatePreview()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">1. Daftar Hadir Peserta Rapat Koordinasi
+                        <textarea id="inLampiran" rows="2" oninput="handleFormChange()" class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none">1. Daftar Hadir Peserta Rapat Koordinasi
 2. Dokumentasi Kegiatan</textarea>
                     </div>
 
@@ -272,15 +276,15 @@
                 <div id="documentPreviewArea" class="bg-white w-full max-w-[210mm] min-h-[297mm] mx-auto p-6 sm:p-10 shadow-md doc-body text-[11pt]">
                     
                     <!-- KOP SURAT DENGAN LOGO KEMENAG -->
-                    <div class="kop-surat border-b-4 border-double border-black pb-3 mb-5 flex items-center gap-4">
-                        <div class="w-20 h-20 flex-shrink-0 flex items-center justify-center">
-                            <img id="logoKemenagImg" alt="Logo Kemenag" style="width: 78px; height: 74px; object-fit: contain;">
+                    <div class="kop-surat border-b-4 border-double border-black pb-3 mb-5 flex items-center gap-3">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 flex items-center justify-center">
+                            <img id="logoKemenagImg" alt="Logo Kemenag" style="width: 72px; height: 68px; object-fit: contain;">
                         </div>
                         <div class="flex-1 text-center">
-                            <div class="font-bold text-[12.5pt] leading-tight tracking-wide">KEMENTERIAN AGAMA REPUBLIK INDONESIA</div>
-                            <div class="font-bold text-[11.5pt] leading-tight">KANTOR KEMENTERIAN AGAMA KABUPATEN PASANGKAYU</div>
-                            <div class="font-bold text-[11pt] leading-tight">SEKSI BIMBINGAN MASYARAKAT ISLAM</div>
-                            <div class="text-[9.5pt] mt-1 leading-snug">
+                            <div class="font-bold text-[12pt] leading-tight tracking-wide">KEMENTERIAN AGAMA REPUBLIK INDONESIA</div>
+                            <div class="font-bold text-[11pt] leading-tight">KANTOR KEMENTERIAN AGAMA KABUPATEN PASANGKAYU</div>
+                            <div class="font-bold text-[10.5pt] leading-tight">SEKSI BIMBINGAN MASYARAKAT ISLAM</div>
+                            <div class="text-[9pt] mt-1 leading-snug">
                                 Jalan Ir. Soekarno (Bukit Cindolo), No.75, Kode Pos 91571<br>
                                 Email: pasangkayu@kemenag.go.id
                             </div>
@@ -288,15 +292,15 @@
                     </div>
 
                     <!-- JUDUL DOKUMEN -->
-                    <div class="text-center font-bold text-[12pt] underline mb-4">
+                    <div class="text-center font-bold text-[11.5pt] underline mb-4">
                         NOTULA RAPAT KOORDINASI KANTOR URUSAN AGAMA (KUA)
                     </div>
 
                     <!-- TABEL INFORMASI RAPAT -->
-                    <table class="w-full border-collapse mb-5 text-[10.5pt]">
+                    <table class="w-full border-collapse mb-5 text-[10pt]">
                         <tr>
-                            <td class="w-36 font-bold py-1 align-top">Hari / Tanggal</td>
-                            <td class="w-4 py-1 align-top">:</td>
+                            <td class="w-32 font-bold py-1 align-top">Hari / Tanggal</td>
+                            <td class="w-3 py-1 align-top">:</td>
                             <td class="py-1 align-top" id="prevHariTanggal">-</td>
                         </tr>
                         <tr>
@@ -332,17 +336,17 @@
                     </table>
 
                     <!-- SUBJUDUL PEMBAHASAN -->
-                    <div class="font-bold text-[11pt] mb-2">
+                    <div class="font-bold text-[10.5pt] mb-2">
                         JALANNYA RAPAT & PEMBAHASAN
                     </div>
 
                     <!-- TABEL UTAMA NOTULA -->
-                    <table class="w-full border-collapse doc-table text-[10pt] mb-6">
+                    <table class="w-full border-collapse doc-table text-[9.5pt] mb-6">
                         <thead>
                             <tr>
-                                <th class="w-10">No.</th>
-                                <th class="w-44">Pemberi Pernyataan<br><span class="font-normal text-[9pt]">(Nama & Jabatan)</span></th>
-                                <th class="w-28">Jenis Pernyataan</th>
+                                <th class="w-9">No.</th>
+                                <th class="w-40">Pemberi Pernyataan<br><span class="font-normal text-[8.5pt]">(Nama & Jabatan)</span></th>
+                                <th class="w-24">Jenis Pernyataan</th>
                                 <th>Pokok Pembahasan / Isi Pernyataan</th>
                             </tr>
                         </thead>
@@ -354,10 +358,10 @@
                     </table>
 
                     <!-- BLOK PENGESAHAN / TANDA TANGAN -->
-                    <div class="mt-6 text-[10.5pt]" style="page-break-inside: avoid; break-inside: avoid;">
+                    <div class="mt-6 text-[10pt] avoid-break" style="page-break-inside: avoid; break-inside: avoid;">
                         <div class="grid grid-cols-2 gap-4">
                             <div></div>
-                            <div class="text-left pl-6">
+                            <div class="text-left pl-4">
                                 Pasangkayu, <span id="prevTglPengesahan">[Tanggal Bulan Tahun]</span>
                             </div>
                         </div>
@@ -380,14 +384,14 @@
                     </div>
 
                     <!-- LAMPIRAN -->
-                    <div class="mt-6 text-[10pt]" style="page-break-inside: avoid; break-inside: avoid;">
+                    <div class="mt-5 text-[9.5pt] avoid-break" style="page-break-inside: avoid; break-inside: avoid;">
                         <strong>Lampiran:</strong>
                         <div id="prevLampiran" class="whitespace-pre-line mt-0.5">1. Daftar Hadir Peserta Rapat Koordinasi
 2. Dokumentasi Kegiatan</div>
                     </div>
 
                     <!-- PRATINJAU BERKAS LAMPIRAN (GAMBAR / PDF) -->
-                    <div id="prevAttachmentContainer" class="mt-4"></div>
+                    <div id="prevAttachmentContainer"></div>
 
                 </div>
             </div>
@@ -405,11 +409,29 @@
                     <i class="fas fa-times text-lg"></i>
                 </button>
             </div>
+
+            <!-- Bar Cadangan File (Anti-Hilang Lintas Sesi / Perangkat) -->
+            <div class="px-5 py-3 bg-amber-50 border-b border-amber-200 flex flex-wrap items-center justify-between gap-2 text-xs">
+                <div class="text-amber-900 flex items-center gap-1.5">
+                    <i class="fas fa-shield-alt text-amber-600"></i>
+                    <span>Cadangkan arsip ke file komputer agar aman jika browser direset:</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="exportArchiveBackup()" class="bg-emerald-700 hover:bg-emerald-800 text-white px-2.5 py-1.5 rounded-lg font-medium transition flex items-center gap-1">
+                        <i class="fas fa-download"></i> Unduh Cadangan
+                    </button>
+                    <label class="bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 px-2.5 py-1.5 rounded-lg font-medium transition flex items-center gap-1 cursor-pointer">
+                        <i class="fas fa-upload text-blue-600"></i> Muat Cadangan
+                        <input type="file" accept="application/json,.json" onchange="importArchiveBackup(event)" class="hidden">
+                    </label>
+                </div>
+            </div>
+
             <div class="p-5 overflow-y-auto flex-1 space-y-3" id="savedListContainer">
                 <!-- Daftar item tersimpan dirender di sini -->
             </div>
             <div class="px-5 py-3 bg-slate-50 border-t border-slate-200 flex justify-between items-center text-xs text-slate-500">
-                <span>Data disimpan secara lokal di browser perangkat Anda.</span>
+                <span id="storageEngineInfo">Penyimpanan permanen aktif (IndexedDB + LocalStorage).</span>
                 <button type="button" onclick="closeSavedModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 px-4 py-1.5 rounded-lg font-medium">Tutup</button>
             </div>
         </div>
@@ -424,10 +446,145 @@
             dokumentasi: []
         };
         const STORAGE_KEY = 'kemenag_pasangkayu_notula_kua_v1';
+        const AUTOSAVE_KEY = 'kemenag_pasangkayu_notula_autosave_v1';
         const RECENT_NAMA_KEY = 'kemenag_pasangkayu_recent_nama_v1';
         const RECENT_JABATAN_KEY = 'kemenag_pasangkayu_recent_jabatan_v1';
+        const DB_NAME = 'ENotulaKemenagPasangkayuDB';
+        const DB_STORE = 'notulas';
 
-        // ==================== GAMBAR LOGO KEMENAG VIA CANVAS (TAJAM DI LAYAR & PDF) ====================
+        // ==================== DATABASE PERMANEN (INDEXEDDB + LOCALSTORAGE) ====================
+
+        function openIndexedDB() {
+            return new Promise((resolve, reject) => {
+                if (!window.indexedDB) {
+                    reject(new Error('IndexedDB tidak didukung'));
+                    return;
+                }
+                const request = indexedDB.open(DB_NAME, 1);
+                request.onupgradeneeded = function(event) {
+                    const db = event.target.result;
+                    if (!db.objectStoreNames.contains(DB_STORE)) {
+                        db.createObjectStore(DB_STORE, { keyPath: 'id' });
+                    }
+                };
+                request.onsuccess = function(event) {
+                    resolve(event.target.result);
+                };
+                request.onerror = function(event) {
+                    reject(event.target.error);
+                };
+            });
+        }
+
+        async function getAllSavedNotulas() {
+            let dbList = [];
+            try {
+                const db = await openIndexedDB();
+                dbList = await new Promise((resolve, reject) => {
+                    const tx = db.transaction(DB_STORE, 'readonly');
+                    const store = tx.objectStore(DB_STORE);
+                    const req = store.getAll();
+                    req.onsuccess = () => resolve(req.result || []);
+                    req.onerror = () => reject(req.error);
+                });
+            } catch (e) {
+                dbList = [];
+            }
+
+            // Sinkronkan dengan LocalStorage jika ada data lama
+            let lsList = [];
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                lsList = raw ? JSON.parse(raw) : [];
+            } catch (e) {
+                lsList = [];
+            }
+
+            if (dbList.length === 0 && lsList.length > 0) {
+                for (const item of lsList) {
+                    await putNotulaToIndexedDB(item);
+                }
+                dbList = lsList;
+            }
+
+            // Urutkan terbaru di atas berdasarkan timestamp
+            dbList.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+            return dbList;
+        }
+
+        async function putNotulaToIndexedDB(record) {
+            try {
+                const db = await openIndexedDB();
+                await new Promise((resolve, reject) => {
+                    const tx = db.transaction(DB_STORE, 'readwrite');
+                    const store = tx.objectStore(DB_STORE);
+                    const req = store.put(record);
+                    req.onsuccess = () => resolve();
+                    req.onerror = () => reject(req.error);
+                });
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        async function deleteNotulaFromIndexedDB(id) {
+            try {
+                const db = await openIndexedDB();
+                await new Promise((resolve, reject) => {
+                    const tx = db.transaction(DB_STORE, 'readwrite');
+                    const store = tx.objectStore(DB_STORE);
+                    const req = store.delete(id);
+                    req.onsuccess = () => resolve();
+                    req.onerror = () => reject(req.error);
+                });
+            } catch (e) {}
+        }
+
+        function syncToLocalStorageMirror(allList) {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(allList));
+            } catch (e) {
+                // Jika melebihi batas 5MB LocalStorage karena foto lampiran besar, simpan versi teks tanpa lampiran berat di mirror
+                try {
+                    const liteList = allList.map(item => ({
+                        ...item,
+                        attachments: { daftarHadir: [], dokumentasi: [] }
+                    }));
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(liteList));
+                } catch (err) {}
+            }
+        }
+
+        async function updateSavedBadge() {
+            const list = await getAllSavedNotulas();
+            document.getElementById('savedCountBadge').textContent = list.length;
+        }
+
+        // ==================== AUTO-SAVE DRAF SAAT INI ====================
+
+        let autoSaveTimer = null;
+        function scheduleAutoSaveDraft() {
+            if (autoSaveTimer) clearTimeout(autoSaveTimer);
+            autoSaveTimer = setTimeout(() => {
+                const draft = collectCurrentFormData(currentNotulaId || 'autosave_temp');
+                try {
+                    // Simpan teks draf ke LocalStorage agar cepat dipulihkan
+                    const liteDraft = {
+                        ...draft,
+                        attachments: { daftarHadir: [], dokumentasi: [] }
+                    };
+                    localStorage.setItem(AUTOSAVE_KEY, JSON.stringify(liteDraft));
+                } catch (e) {}
+            }, 600);
+        }
+
+        function handleFormChange() {
+            updatePreview();
+            scheduleAutoSaveDraft();
+        }
+
+        // ==================== GAMBAR LOGO KEMENAG VIA CANVAS ====================
 
         function generateKemenagLogoDataUrl() {
             const canvas = document.createElement('canvas');
@@ -436,7 +593,6 @@
             const ctx = canvas.getContext('2d');
             ctx.scale(2, 2);
 
-            // Perisai Segi Lima Hijau & Kuning
             ctx.beginPath();
             ctx.moveTo(110, 8);
             ctx.lineTo(210, 79);
@@ -450,7 +606,6 @@
             ctx.strokeStyle = '#FCE300';
             ctx.stroke();
 
-            // Garis tepi hitam luar & dalam perisai
             ctx.beginPath();
             ctx.moveTo(110, 4);
             ctx.lineTo(214, 78);
@@ -473,7 +628,6 @@
             ctx.strokeStyle = '#000000';
             ctx.stroke();
 
-            // Bintang Emas di Puncak
             const starPts = [
                 [110, 32], [114.5, 45], [128, 45], [117, 53], [121, 66],
                 [110, 58], [99, 66], [103, 53], [92, 45], [105.5, 45]
@@ -487,7 +641,6 @@
             ctx.strokeStyle = '#000000';
             ctx.stroke();
 
-            // Tangkai Kapas Kiri
             ctx.beginPath();
             ctx.moveTo(84, 154);
             ctx.bezierCurveTo(52, 135, 45, 92, 85, 62);
@@ -496,7 +649,6 @@
             ctx.lineCap = 'round';
             ctx.stroke();
 
-            // Kuntum Kapas
             const kapasCircles = [
                 [80, 66, 4.5], [85, 63, 4], [71, 75, 5], [76, 71, 4.5],
                 [63, 86, 5.5], [69, 83, 4.5], [57, 99, 5.5], [64, 97, 4.5],
@@ -513,7 +665,6 @@
                 ctx.stroke();
             });
 
-            // Kelopak Daun Kapas
             const kelopak = [
                 [[77, 70], [83, 72], [80, 66]],
                 [[68, 80], [75, 82], [72, 76]],
@@ -536,7 +687,6 @@
                 ctx.stroke();
             });
 
-            // Tangkai Padi Kanan
             ctx.beginPath();
             ctx.moveTo(136, 154);
             ctx.bezierCurveTo(168, 135, 175, 92, 135, 62);
@@ -544,7 +694,6 @@
             ctx.strokeStyle = '#E5A800';
             ctx.stroke();
 
-            // Butir-butir Padi
             const padiGrains = [
                 [137, 63, 6, 2.5, -25], [145, 69, 6.5, 2.8, -15], [136, 72, 6, 2.5, -40],
                 [152, 78, 7, 3, 0], [143, 80, 6.5, 2.8, -30], [158, 88, 7, 3, 15],
@@ -567,7 +716,6 @@
                 ctx.restore();
             });
 
-            // Rehal (Penyangga Kitab)
             ctx.fillStyle = '#FFFFFF';
             ctx.strokeStyle = '#000000';
             ctx.lineWidth = 1.3;
@@ -583,7 +731,6 @@
             ctx.moveTo(94, 137); ctx.lineTo(110, 129); ctx.lineTo(126, 137);
             ctx.closePath(); ctx.fillStyle = '#000000'; ctx.fill();
 
-            // Sampul & Halaman Kitab Suci
             ctx.beginPath();
             ctx.moveTo(80, 111);
             ctx.quadraticCurveTo(95, 107, 110, 116);
@@ -595,7 +742,6 @@
             ctx.fillStyle = '#D99B00'; ctx.fill();
             ctx.lineWidth = 1.2; ctx.strokeStyle = '#000000'; ctx.stroke();
 
-            // Halaman Kiri
             ctx.beginPath();
             ctx.moveTo(87, 89);
             ctx.quadraticCurveTo(99, 87, 110, 95);
@@ -605,7 +751,6 @@
             ctx.fillStyle = '#FBC02D'; ctx.fill();
             ctx.lineWidth = 1.3; ctx.stroke();
 
-            // Halaman Kanan
             ctx.beginPath();
             ctx.moveTo(133, 89);
             ctx.quadraticCurveTo(121, 87, 110, 95);
@@ -615,7 +760,6 @@
             ctx.fillStyle = '#FBC02D'; ctx.fill();
             ctx.lineWidth = 1.3; ctx.stroke();
 
-            // Garis tulisan kitab
             ctx.lineWidth = 0.9;
             ctx.strokeStyle = '#000000';
             [95, 99, 103, 107].forEach((y, idx) => {
@@ -630,7 +774,6 @@
                 ctx.stroke();
             });
 
-            // Ujung Pita Kiri & Kanan
             ctx.fillStyle = '#FFFFFF';
             ctx.strokeStyle = '#000000';
             ctx.lineWidth = 1.5;
@@ -642,7 +785,6 @@
             ctx.moveTo(182, 144); ctx.lineTo(157, 148); ctx.lineTo(162, 164); ctx.lineTo(184, 161); ctx.lineTo(176, 153);
             ctx.closePath(); ctx.fill(); ctx.stroke();
 
-            // Lipatan Bayangan Pita
             ctx.fillStyle = '#000000';
             ctx.beginPath();
             ctx.moveTo(56, 154); ctx.lineTo(63, 148); ctx.lineTo(62, 162);
@@ -652,7 +794,6 @@
             ctx.moveTo(164, 154); ctx.lineTo(157, 148); ctx.lineTo(158, 162);
             ctx.closePath(); ctx.fill();
 
-            // Badan Utama Pita Melengkung
             ctx.beginPath();
             ctx.moveTo(55, 146);
             ctx.quadraticCurveTo(110, 164, 165, 146);
@@ -662,7 +803,6 @@
             ctx.fillStyle = '#FFFFFF'; ctx.fill();
             ctx.lineWidth = 1.6; ctx.strokeStyle = '#000000'; ctx.stroke();
 
-            // Teks Melengkung "IKHLAS BERAMAL"
             const text = 'IKHLAS BERAMAL';
             ctx.font = '900 10px Arial, sans-serif';
             ctx.fillStyle = '#000000';
@@ -672,7 +812,6 @@
             for (let i = 0; i < totalChars; i++) {
                 const t = (i + 0.5) / totalChars;
                 const u = 0.08 + t * 0.84;
-                // Titik pada kurva Bezier kuadratik P0(60,157), P1(110,174), P2(160,157)
                 const bx = (1 - u) * (1 - u) * 60 + 2 * (1 - u) * u * 110 + u * u * 160;
                 const by = (1 - u) * (1 - u) * 157 + 2 * (1 - u) * u * 174 + u * u * 157;
                 const dx = 2 * (1 - u) * (110 - 60) + 2 * u * (160 - 110);
@@ -690,19 +829,45 @@
         }
 
         // Inisialisasi saat halaman dimuat
-        window.onload = function() {
+        window.onload = async function() {
             const logoImg = document.getElementById('logoKemenagImg');
             if (logoImg) {
                 logoImg.src = generateKemenagLogoDataUrl();
             }
 
+            // Minta browser agar penyimpanan tidak dihapus otomatis (Persistent Storage)
+            if (navigator.storage && navigator.storage.persist) {
+                try {
+                    await navigator.storage.persist();
+                } catch (e) {}
+            }
+
             renderRecentSuggestions();
-            const saved = getSavedNotulas();
-            updateSavedBadge();
-            if (saved.length === 0) {
-                loadDefaultSample();
-            } else {
-                createNewNotula(false);
+            const saved = await getAllSavedNotulas();
+            document.getElementById('savedCountBadge').textContent = saved.length;
+
+            // Cek apakah ada draf auto-save terakhir yang belum sempat disimpan
+            let restoredDraft = false;
+            try {
+                const rawDraft = localStorage.getItem(AUTOSAVE_KEY);
+                if (rawDraft) {
+                    const draftObj = JSON.parse(rawDraft);
+                    if (draftObj && (draftObj.hariTanggal || draftObj.agenda || (draftObj.items && draftObj.items.length > 0))) {
+                        populateFormFromObject(draftObj, draftObj.id && draftObj.id !== 'autosave_temp' ? 'Draf Dipulihkan' : 'Draf Otomatis', 'bg-sky-100 text-sky-800');
+                        if (draftObj.id && draftObj.id !== 'autosave_temp') {
+                            currentNotulaId = draftObj.id;
+                        }
+                        restoredDraft = true;
+                    }
+                }
+            } catch (e) {}
+
+            if (!restoredDraft) {
+                if (saved.length === 0) {
+                    loadDefaultSample();
+                } else {
+                    createNewNotula(false);
+                }
             }
         };
 
@@ -769,84 +934,87 @@
 
         // ==================== INISIALISASI CONTOH & FORM BARU ====================
 
-        function loadDefaultSample() {
-            currentNotulaId = null;
+        function populateFormFromObject(obj, badgeText, badgeColorClass) {
             const badge = document.getElementById('statusEditBadge');
-            badge.textContent = 'Contoh Draf';
-            badge.className = 'text-xs bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-medium';
+            badge.textContent = badgeText;
+            badge.className = `text-xs ${badgeColorClass} px-2.5 py-1 rounded-full font-medium`;
 
-            document.getElementById('inHariTanggal').value = 'Jumat, 13 November 2026';
-            document.getElementById('inWaktu').value = '09.00 WITA - Selesai';
-            document.getElementById('inTempat').value = 'Aula Kantor Kementerian Agama Kab. Pasangkayu';
-            document.getElementById('inAgenda').value = 'Evaluasi Layanan Nikah/Rujuk (SIMKAH) & Penyerapan Anggaran BOP KUA Triwulan IV';
-            document.getElementById('inPimpinan').value = 'Kepala Seksi Bimas Islam Kemenag Kab. Pasangkayu';
-            document.getElementById('inNotulis').value = 'Ahmad Fauzi, S.H.I (Staf Seksi Bimas Islam)';
-            document.getElementById('inPeserta').value = 'Kepala Seksi Bimas Islam, Para Kepala KUA Kecamatan se-Kabupaten Pasangkayu, Penghulu, Penyuluh Agama Islam, dan Staf Seksi Bimas Islam (Daftar hadir terlampir)';
+            document.getElementById('inHariTanggal').value = obj.hariTanggal || '';
+            document.getElementById('inWaktu').value = obj.waktu || '';
+            document.getElementById('inTempat').value = obj.tempat || '';
+            document.getElementById('inAgenda').value = obj.agenda || '';
+            document.getElementById('inPimpinan').value = obj.pimpinan || '';
+            document.getElementById('inNotulis').value = obj.notulis || '';
+            document.getElementById('inPeserta').value = obj.peserta || '';
+            document.getElementById('inTglPengesahan').value = obj.tglPengesahan || '';
+            document.getElementById('inKasiNama').value = obj.kasiNama || '';
+            document.getElementById('inKasiNip').value = obj.kasiNip || '';
+            document.getElementById('inNotulisTtdNama').value = obj.notulisTtdNama || '';
+            document.getElementById('inNotulisTtdNip').value = obj.notulisTtdNip || '';
+            document.getElementById('inLampiran').value = obj.lampiran || '';
 
-            document.getElementById('inTglPengesahan').value = '13 November 2026';
-            document.getElementById('inKasiNama').value = 'H. Muhammad Syahrir, S.Ag., M.Pd.';
-            document.getElementById('inKasiNip').value = '197504122000031002';
-            document.getElementById('inNotulisTtdNama').value = 'Ahmad Fauzi, S.H.I';
-            document.getElementById('inNotulisTtdNip').value = '198809152015031004';
-            document.getElementById('inLampiran').value = '1. Daftar Hadir Peserta Rapat Koordinasi\n2. Dokumentasi Kegiatan';
-
-            attachments = { daftarHadir: [], dokumentasi: [] };
-            updateAttachmentUI();
-
-            discussionItems = [
-                {
-                    nama: 'H. Muhammad Syahrir, S.Ag., M.Pd.',
-                    jabatan: 'Kepala Seksi Bimas Islam',
-                    jenis: 'Penyampaian',
-                    isi: 'Membuka rapat koordinasi dan menekankan pentingnya ketertiban penginputan data peristiwa nikah pada aplikasi SIMKAH Gen-4 serta percepatan pertanggungjawaban BOP KUA menjelang akhir tahun anggaran.'
-                },
-                {
-                    nama: 'H. Abdul Rahman, S.Ag.',
-                    jabatan: 'Kepala KUA Kec. Pasangkayu',
-                    jenis: 'Umpan Balik',
-                    isi: 'Melaporkan bahwa seluruh peristiwa nikah bulan berjalan telah terinput 100%, namun masih dibutuhkan penyesuaian jadwal bimbingan perkawinan (Bimwin) mandiri di tingkat kecamatan.'
-                },
-                {
-                    nama: 'Pimpinan Rapat & Peserta',
-                    jabatan: 'Forum Rapat Koordinasi',
-                    jenis: 'Keputusan',
-                    isi: 'Seluruh KUA Kecamatan wajib menyetorkan laporan realisasi BOP dan rekapitulasi peristiwa nikah paling lambat tanggal 25 setiap bulan ke Seksi Bimas Islam.'
-                }
-            ];
+            const savedAtt = obj.attachments || {};
+            attachments = {
+                daftarHadir: Array.isArray(savedAtt.daftarHadir) ? savedAtt.daftarHadir : (savedAtt.daftarHadir ? [savedAtt.daftarHadir] : []),
+                dokumentasi: Array.isArray(savedAtt.dokumentasi) ? savedAtt.dokumentasi : (savedAtt.dokumentasi ? [savedAtt.dokumentasi] : [])
+            };
+            discussionItems = Array.isArray(obj.items) ? obj.items : [];
 
             cancelEditItem();
+            updateAttachmentUI();
             renderDiscussionList();
             updatePreview();
         }
 
+        function loadDefaultSample() {
+            currentNotulaId = null;
+            populateFormFromObject({
+                hariTanggal: 'Jumat, 13 November 2026',
+                waktu: '09.00 WITA - Selesai',
+                tempat: 'Aula Kantor Kementerian Agama Kab. Pasangkayu',
+                agenda: 'Evaluasi Layanan Nikah/Rujuk (SIMKAH) & Penyerapan Anggaran BOP KUA Triwulan IV',
+                pimpinan: 'Kepala Seksi Bimas Islam Kemenag Kab. Pasangkayu',
+                notulis: 'Ahmad Fauzi, S.H.I (Staf Seksi Bimas Islam)',
+                peserta: 'Kepala Seksi Bimas Islam, Para Kepala KUA Kecamatan se-Kabupaten Pasangkayu, Penghulu, Penyuluh Agama Islam, dan Staf Seksi Bimas Islam (Daftar hadir terlampir)',
+                tglPengesahan: '13 November 2026',
+                kasiNama: 'H. Muhammad Syahrir, S.Ag., M.Pd.',
+                kasiNip: '197504122000031002',
+                notulisTtdNama: 'Ahmad Fauzi, S.H.I',
+                notulisTtdNip: '198809152015031004',
+                lampiran: '1. Daftar Hadir Peserta Rapat Koordinasi\n2. Dokumentasi Kegiatan',
+                items: [
+                    {
+                        nama: 'H. Muhammad Syahrir, S.Ag., M.Pd.',
+                        jabatan: 'Kepala Seksi Bimas Islam',
+                        jenis: 'Penyampaian',
+                        isi: 'Membuka rapat koordinasi dan menekankan pentingnya ketertiban penginputan data peristiwa nikah pada aplikasi SIMKAH Gen-4 serta percepatan pertanggungjawaban BOP KUA menjelang akhir tahun anggaran.'
+                    },
+                    {
+                        nama: 'H. Abdul Rahman, S.Ag.',
+                        jabatan: 'Kepala KUA Kec. Pasangkayu',
+                        jenis: 'Umpan Balik',
+                        isi: 'Melaporkan bahwa seluruh peristiwa nikah bulan berjalan telah terinput 100%, namun masih dibutuhkan penyesuaian jadwal bimbingan perkawinan (Bimwin) mandiri di tingkat kecamatan.'
+                    },
+                    {
+                        nama: 'Pimpinan Rapat & Peserta',
+                        jabatan: 'Forum Rapat Koordinasi',
+                        jenis: 'Keputusan',
+                        isi: 'Seluruh KUA Kecamatan wajib menyetorkan laporan realisasi BOP dan rekapitulasi peristiwa nikah paling lambat tanggal 25 setiap bulan ke Seksi Bimas Islam.'
+                    }
+                ],
+                attachments: { daftarHadir: [], dokumentasi: [] }
+            }, 'Contoh Draf', 'bg-amber-100 text-amber-800');
+        }
+
         function createNewNotula(notify = true) {
             currentNotulaId = null;
-            const badge = document.getElementById('statusEditBadge');
-            badge.textContent = 'Draf Baru';
-            badge.className = 'text-xs bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full font-medium';
-
-            document.getElementById('inHariTanggal').value = '';
-            document.getElementById('inWaktu').value = '';
-            document.getElementById('inTempat').value = '';
-            document.getElementById('inAgenda').value = '';
-            document.getElementById('inPimpinan').value = '';
-            document.getElementById('inNotulis').value = '';
-            document.getElementById('inPeserta').value = 'Kepala Seksi Bimas Islam, Para Kepala KUA Kecamatan se-Kabupaten Pasangkayu, Penghulu, Penyuluh Agama Islam, dan Staf Seksi Bimas Islam (Daftar hadir terlampir)';
-
-            document.getElementById('inTglPengesahan').value = '';
-            document.getElementById('inKasiNama').value = '';
-            document.getElementById('inKasiNip').value = '';
-            document.getElementById('inNotulisTtdNama').value = '';
-            document.getElementById('inNotulisTtdNip').value = '';
-            document.getElementById('inLampiran').value = '1. Daftar Hadir Peserta Rapat Koordinasi\n2. Dokumentasi Kegiatan';
-
-            attachments = { daftarHadir: [], dokumentasi: [] };
-            updateAttachmentUI();
-
-            discussionItems = [];
-            cancelEditItem();
-            renderDiscussionList();
-            updatePreview();
+            try { localStorage.removeItem(AUTOSAVE_KEY); } catch (e) {}
+            populateFormFromObject({
+                peserta: 'Kepala Seksi Bimas Islam, Para Kepala KUA Kecamatan se-Kabupaten Pasangkayu, Penghulu, Penyuluh Agama Islam, dan Staf Seksi Bimas Islam (Daftar hadir terlampir)',
+                lampiran: '1. Daftar Hadir Peserta Rapat Koordinasi\n2. Dokumentasi Kegiatan',
+                items: [],
+                attachments: { daftarHadir: [], dokumentasi: [] }
+            }, 'Draf Baru', 'bg-emerald-100 text-emerald-800');
             if (notify) showToast('Formulir notula baru siap diisi.', 'info');
         }
 
@@ -858,8 +1026,8 @@
 
             let loadedCount = 0;
             files.forEach(file => {
-                if (file.size > 3.5 * 1024 * 1024) {
-                    showToast(`File "${file.name}" terlalu besar (Maksimal 3.5 MB).`, 'error');
+                if (file.size > 5 * 1024 * 1024) {
+                    showToast(`File "${file.name}" terlalu besar (Maksimal 5 MB).`, 'error');
                     return;
                 }
 
@@ -952,6 +1120,7 @@
 
             renderDiscussionList();
             updatePreview();
+            scheduleAutoSaveDraft();
         }
 
         function editDiscussionItem(index) {
@@ -991,6 +1160,7 @@
             }
             renderDiscussionList();
             updatePreview();
+            scheduleAutoSaveDraft();
             showToast('Poin pembahasan dihapus.', 'info');
         }
 
@@ -1066,11 +1236,11 @@
                 `;
             } else {
                 tbody.innerHTML = discussionItems.map((item, idx) => `
-                    <tr style="page-break-inside: avoid; break-inside: avoid;">
+                    <tr class="avoid-break" style="page-break-inside: avoid; break-inside: avoid;">
                         <td class="text-center">${idx + 1}.</td>
                         <td>
                             <strong>${escapeHtml(item.nama)}</strong>
-                            ${item.jabatan ? `<br><span class="text-[9pt]">${escapeHtml(item.jabatan)}</span>` : ''}
+                            ${item.jabatan ? `<br><span class="text-[8.5pt]">${escapeHtml(item.jabatan)}</span>` : ''}
                         </td>
                         <td class="text-center font-semibold">${escapeHtml(item.jenis)}</td>
                         <td class="whitespace-pre-line text-justify">${escapeHtml(item.isi)}</td>
@@ -1088,25 +1258,36 @@
                 const dhPdfs = dhList.filter(f => f.type === 'application/pdf');
 
                 if (dhImages.length > 0) {
+                    const dhRows = dhImages.map((img, i) => `
+                        <tr class="avoid-break" style="page-break-inside: avoid; break-inside: avoid;">
+                            <td style="padding: 6px 0; text-align: center; border: none;">
+                                <img src="${img.dataUrl}" alt="${escapeHtml(img.name)}" style="max-width: 100%; max-height: 210mm; width: auto; height: auto; margin: 0 auto; display: block; border: 1px solid #d1d5db;">
+                                ${dhImages.length > 1 ? `<div style="font-size: 8.5pt; color: #6b7280; margin-top: 4px;">Halaman ${i + 1} - ${escapeHtml(img.name)}</div>` : ''}
+                            </td>
+                        </tr>
+                    `).join('');
+
                     attHtml += `
-                        <div class="html2pdf__page-break"></div>
-                        <div class="border-t border-dashed border-gray-400 pt-2">
-                            <div class="font-bold text-[10.5pt] mb-3 uppercase">Lampiran 1: Daftar Hadir Peserta Rapat</div>
-                            <div>
-                                ${dhImages.map((img, i) => `
-                                    <div style="page-break-inside: avoid; break-inside: avoid; margin-bottom: 14px; text-align: center;">
-                                        <img src="${img.dataUrl}" alt="${escapeHtml(img.name)}" style="max-width: 100%; max-height: 220mm; width: auto; height: auto; margin: 0 auto; display: block; border: 1px solid #d1d5db;">
-                                        ${dhImages.length > 1 ? `<div class="text-[8.5pt] text-gray-500 mt-1">Halaman ${i + 1} - ${escapeHtml(img.name)}</div>` : ''}
-                                    </div>
-                                `).join('')}
-                            </div>
+                        <div class="pdf-page-break preview-att-divider">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <thead style="display: table-header-group;">
+                                    <tr>
+                                        <th style="text-align: left; font-weight: bold; font-size: 10pt; padding-bottom: 8px; text-transform: uppercase; border: none; background: transparent;">
+                                            Lampiran 1: Daftar Hadir Peserta Rapat
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${dhRows}
+                                </tbody>
+                            </table>
                         </div>
                     `;
                 }
 
                 dhPdfs.forEach((pdfFile, idx) => {
                     attHtml += `
-                        <div class="p-3 mt-2 bg-gray-100 border border-gray-300 rounded text-[9.5pt] text-gray-700 flex items-center gap-2" data-html2canvas-ignore="true">
+                        <div class="p-3 mt-3 bg-gray-100 border border-gray-300 rounded text-[9.5pt] text-gray-700 flex items-center gap-2" data-html2canvas-ignore="true">
                             <i class="fas fa-file-pdf text-rose-600 text-base"></i>
                             <span><strong>Lampiran 1 (PDF #${idx + 1}):</strong> ${escapeHtml(pdfFile.name)} <em>(Akan digabungkan otomatis di halaman akhir saat Unduh PDF)</em></span>
                         </div>
@@ -1120,21 +1301,20 @@
                 const dokPdfs = dokList.filter(f => f.type === 'application/pdf');
 
                 if (dokImages.length > 0) {
-                    // Susun foto dokumentasi menjadi baris tabel 2 kolom agar tiap baris tidak pernah terpotong di batas halaman
-                    let tableRowsHtml = '';
+                    let dokRows = '';
                     for (let i = 0; i < dokImages.length; i += 2) {
                         const img1 = dokImages[i];
                         const img2 = dokImages[i + 1];
-                        tableRowsHtml += `
-                            <tr style="page-break-inside: avoid; break-inside: avoid;">
-                                <td style="width: ${img2 ? '50%' : '100%'}; padding: 6px; vertical-align: top; text-align: center;">
-                                    <img src="${img1.dataUrl}" alt="${escapeHtml(img1.name)}" style="max-width: 100%; max-height: 82mm; width: auto; height: auto; margin: 0 auto; display: block; border: 1px solid #d1d5db;">
-                                    <div style="font-size: 8.5pt; color: #4b5563; margin-top: 4px;">Dokumentasi ${i + 1}</div>
+                        dokRows += `
+                            <tr class="avoid-break" style="page-break-inside: avoid; break-inside: avoid;">
+                                <td style="width: ${img2 ? '50%' : '100%'}; padding: 5px; vertical-align: top; text-align: center; border: none;">
+                                    <img src="${img1.dataUrl}" alt="${escapeHtml(img1.name)}" style="max-width: 100%; max-height: 76mm; width: auto; height: auto; margin: 0 auto; display: block; border: 1px solid #d1d5db;">
+                                    <div style="font-size: 8.5pt; color: #4b5563; margin-top: 3px;">Dokumentasi ${i + 1}</div>
                                 </td>
                                 ${img2 ? `
-                                <td style="width: 50%; padding: 6px; vertical-align: top; text-align: center;">
-                                    <img src="${img2.dataUrl}" alt="${escapeHtml(img2.name)}" style="max-width: 100%; max-height: 82mm; width: auto; height: auto; margin: 0 auto; display: block; border: 1px solid #d1d5db;">
-                                    <div style="font-size: 8.5pt; color: #4b5563; margin-top: 4px;">Dokumentasi ${i + 2}</div>
+                                <td style="width: 50%; padding: 5px; vertical-align: top; text-align: center; border: none;">
+                                    <img src="${img2.dataUrl}" alt="${escapeHtml(img2.name)}" style="max-width: 100%; max-height: 76mm; width: auto; height: auto; margin: 0 auto; display: block; border: 1px solid #d1d5db;">
+                                    <div style="font-size: 8.5pt; color: #4b5563; margin-top: 3px;">Dokumentasi ${i + 2}</div>
                                 </td>
                                 ` : ''}
                             </tr>
@@ -1142,12 +1322,17 @@
                     }
 
                     attHtml += `
-                        <div class="html2pdf__page-break"></div>
-                        <div class="border-t border-dashed border-gray-400 pt-2">
-                            <div class="font-bold text-[10.5pt] mb-2 uppercase">Lampiran 2: Dokumentasi Kegiatan</div>
+                        <div class="pdf-page-break preview-att-divider">
                             <table style="width: 100%; border-collapse: collapse;">
+                                <thead style="display: table-header-group;">
+                                    <tr>
+                                        <th colspan="2" style="text-align: left; font-weight: bold; font-size: 10pt; padding-bottom: 6px; text-transform: uppercase; border: none; background: transparent;">
+                                            Lampiran 2: Dokumentasi Kegiatan
+                                        </th>
+                                    </tr>
+                                </thead>
                                 <tbody>
-                                    ${tableRowsHtml}
+                                    ${dokRows}
                                 </tbody>
                             </table>
                         </div>
@@ -1156,7 +1341,7 @@
 
                 dokPdfs.forEach((pdfFile, idx) => {
                     attHtml += `
-                        <div class="p-3 mt-2 bg-gray-100 border border-gray-300 rounded text-[9.5pt] text-gray-700 flex items-center gap-2" data-html2canvas-ignore="true">
+                        <div class="p-3 mt-3 bg-gray-100 border border-gray-300 rounded text-[9.5pt] text-gray-700 flex items-center gap-2" data-html2canvas-ignore="true">
                             <i class="fas fa-file-pdf text-rose-600 text-base"></i>
                             <span><strong>Lampiran 2 (PDF #${idx + 1}):</strong> ${escapeHtml(pdfFile.name)} <em>(Akan digabungkan otomatis di halaman akhir saat Unduh PDF)</em></span>
                         </div>
@@ -1165,44 +1350,24 @@
             }
 
             attContainer.innerHTML = attHtml;
+            // Tambahkan garis pemisah hanya pada pratinjau layar (bukan pada cetakan PDF)
+            attContainer.querySelectorAll('.preview-att-divider').forEach(el => {
+                el.classList.add('mt-6', 'pt-4', 'border-t', 'border-dashed', 'border-gray-400');
+            });
         }
 
-        // ==================== PENYIMPANAN LOKAL (ARSIP) ====================
+        // ==================== PENYIMPANAN ARSIP PERMANEN ====================
 
-        function getSavedNotulas() {
-            try {
-                const raw = localStorage.getItem(STORAGE_KEY);
-                return raw ? JSON.parse(raw) : [];
-            } catch (e) {
-                return [];
-            }
-        }
-
-        function updateSavedBadge() {
-            const count = getSavedNotulas().length;
-            document.getElementById('savedCountBadge').textContent = count;
-        }
-
-        function saveToStorage() {
-            const hariTanggal = document.getElementById('inHariTanggal').value.trim();
-            const agenda = document.getElementById('inAgenda').value.trim();
-
-            if (!hariTanggal && !agenda) {
-                showToast('Isi minimal Hari/Tanggal atau Agenda Rapat sebelum menyimpan!', 'error');
-                return;
-            }
-
-            const list = getSavedNotulas();
+        function collectCurrentFormData(recordId) {
             const now = new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' });
-            const recordId = currentNotulaId || ('notula_' + Date.now());
-
-            const dataObj = {
+            return {
                 id: recordId,
+                timestamp: Date.now(),
                 updatedAt: now,
-                hariTanggal: hariTanggal,
+                hariTanggal: document.getElementById('inHariTanggal').value.trim(),
                 waktu: document.getElementById('inWaktu').value.trim(),
                 tempat: document.getElementById('inTempat').value.trim(),
-                agenda: agenda,
+                agenda: document.getElementById('inAgenda').value.trim(),
                 pimpinan: document.getElementById('inPimpinan').value.trim(),
                 notulis: document.getElementById('inNotulis').value.trim(),
                 peserta: document.getElementById('inPeserta').value.trim(),
@@ -1215,36 +1380,49 @@
                 items: discussionItems,
                 attachments: attachments
             };
-
-            const existingIdx = list.findIndex(item => item.id === recordId);
-            if (existingIdx >= 0) {
-                list[existingIdx] = dataObj;
-            } else {
-                list.unshift(dataObj);
-            }
-
-            try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-                currentNotulaId = recordId;
-                const badge = document.getElementById('statusEditBadge');
-                badge.textContent = 'Tersimpan';
-                badge.className = 'text-xs bg-blue-100 text-blue-800 px-2.5 py-1 rounded-full font-medium';
-                updateSavedBadge();
-                showToast('Notula berhasil disimpan ke arsip browser!');
-            } catch (e) {
-                showToast('Gagal menyimpan: ukuran lampiran melebihi kapasitas browser.', 'error');
-            }
         }
 
-        function openSavedModal() {
-            const list = getSavedNotulas();
+        async function saveToStorage() {
+            const hariTanggal = document.getElementById('inHariTanggal').value.trim();
+            const agenda = document.getElementById('inAgenda').value.trim();
+
+            if (!hariTanggal && !agenda) {
+                showToast('Isi minimal Hari/Tanggal atau Agenda Rapat sebelum menyimpan!', 'error');
+                return;
+            }
+
+            const recordId = currentNotulaId || ('notula_' + Date.now());
+            const dataObj = collectCurrentFormData(recordId);
+
+            const savedOk = await putNotulaToIndexedDB(dataObj);
+            const allList = await getAllSavedNotulas();
+            if (!savedOk) {
+                const idx = allList.findIndex(x => x.id === recordId);
+                if (idx >= 0) allList[idx] = dataObj;
+                else allList.unshift(dataObj);
+            }
+            syncToLocalStorageMirror(allList);
+
+            currentNotulaId = recordId;
+            try { localStorage.removeItem(AUTOSAVE_KEY); } catch (e) {}
+
+            const badge = document.getElementById('statusEditBadge');
+            badge.textContent = 'Tersimpan';
+            badge.className = 'text-xs bg-blue-100 text-blue-800 px-2.5 py-1 rounded-full font-medium';
+            await updateSavedBadge();
+            showToast('Notula berhasil disimpan ke arsip permanen!');
+        }
+
+        async function openSavedModal() {
+            const list = await getAllSavedNotulas();
             const container = document.getElementById('savedListContainer');
 
             if (list.length === 0) {
                 container.innerHTML = `
                     <div class="text-center py-10 text-slate-400">
                         <i class="fas fa-folder-open text-4xl mb-2"></i>
-                        <p class="text-sm">Belum ada notula yang tersimpan di arsip.</p>
+                        <p class="text-sm font-medium text-slate-600">Belum ada notula yang tersimpan di arsip.</p>
+                        <p class="text-xs text-slate-400 mt-1">Jika Anda memiliki file cadangan (.json), klik tombol "Muat Cadangan" di atas.</p>
                     </div>
                 `;
             } else {
@@ -1278,58 +1456,85 @@
             document.getElementById('savedModal').classList.add('hidden');
         }
 
-        function loadNotula(id) {
-            const list = getSavedNotulas();
+        async function loadNotula(id) {
+            const list = await getAllSavedNotulas();
             const found = list.find(item => item.id === id);
             if (!found) return;
 
             currentNotulaId = found.id;
-            const badge = document.getElementById('statusEditBadge');
-            badge.textContent = 'Arsip Dibuka';
-            badge.className = 'text-xs bg-blue-100 text-blue-800 px-2.5 py-1 rounded-full font-medium';
-
-            document.getElementById('inHariTanggal').value = found.hariTanggal || '';
-            document.getElementById('inWaktu').value = found.waktu || '';
-            document.getElementById('inTempat').value = found.tempat || '';
-            document.getElementById('inAgenda').value = found.agenda || '';
-            document.getElementById('inPimpinan').value = found.pimpinan || '';
-            document.getElementById('inNotulis').value = found.notulis || '';
-            document.getElementById('inPeserta').value = found.peserta || '';
-            document.getElementById('inTglPengesahan').value = found.tglPengesahan || '';
-            document.getElementById('inKasiNama').value = found.kasiNama || '';
-            document.getElementById('inKasiNip').value = found.kasiNip || '';
-            document.getElementById('inNotulisTtdNama').value = found.notulisTtdNama || '';
-            document.getElementById('inNotulisTtdNip').value = found.notulisTtdNip || '';
-            document.getElementById('inLampiran').value = found.lampiran || '';
-
-            const savedAtt = found.attachments || {};
-            attachments = {
-                daftarHadir: Array.isArray(savedAtt.daftarHadir) ? savedAtt.daftarHadir : (savedAtt.daftarHadir ? [savedAtt.daftarHadir] : []),
-                dokumentasi: Array.isArray(savedAtt.dokumentasi) ? savedAtt.dokumentasi : (savedAtt.dokumentasi ? [savedAtt.dokumentasi] : [])
-            };
-            discussionItems = Array.isArray(found.items) ? found.items : [];
-
-            cancelEditItem();
-            updateAttachmentUI();
-            renderDiscussionList();
-            updatePreview();
+            populateFormFromObject(found, 'Arsip Dibuka', 'bg-blue-100 text-blue-800');
             closeSavedModal();
             showToast('Notula berhasil dimuat dari arsip.');
         }
 
-        function deleteNotula(id) {
-            let list = getSavedNotulas();
-            list = list.filter(item => item.id !== id);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+        async function deleteNotula(id) {
+            await deleteNotulaFromIndexedDB(id);
+            const remaining = await getAllSavedNotulas();
+            syncToLocalStorageMirror(remaining);
+
             if (currentNotulaId === id) {
                 currentNotulaId = null;
                 const badge = document.getElementById('statusEditBadge');
                 badge.textContent = 'Draf Baru';
                 badge.className = 'text-xs bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full font-medium';
             }
-            updateSavedBadge();
-            openSavedModal();
+            await updateSavedBadge();
+            await openSavedModal();
             showToast('Arsip notula dihapus.', 'info');
+        }
+
+        // Ekspor & Impor Cadangan File (.JSON)
+        async function exportArchiveBackup() {
+            const list = await getAllSavedNotulas();
+            if (list.length === 0) {
+                showToast('Tidak ada arsip tersimpan untuk dicadangkan.', 'error');
+                return;
+            }
+            const backupPayload = {
+                app: 'E-Notula Rapat KUA Kemenag Pasangkayu',
+                exportedAt: new Date().toISOString(),
+                records: list
+            };
+            const blob = new Blob([JSON.stringify(backupPayload, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            const dateStr = new Date().toISOString().slice(0, 10);
+            a.href = url;
+            a.download = `Cadangan_Arsip_Notula_KUA_${dateStr}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast(`${list.length} arsip berhasil diunduh sebagai file cadangan.`);
+        }
+
+        function importArchiveBackup(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    const records = Array.isArray(parsed) ? parsed : (Array.isArray(parsed.records) ? parsed.records : []);
+                    if (records.length === 0) {
+                        showToast('File cadangan kosong atau format tidak sesuai.', 'error');
+                        return;
+                    }
+                    for (const rec of records) {
+                        if (!rec.id) rec.id = 'notula_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
+                        await putNotulaToIndexedDB(rec);
+                    }
+                    const allList = await getAllSavedNotulas();
+                    syncToLocalStorageMirror(allList);
+                    await updateSavedBadge();
+                    await openSavedModal();
+                    showToast(`${records.length} arsip notula berhasil dipulihkan!`);
+                } catch (err) {
+                    showToast('Gagal membaca file cadangan JSON.', 'error');
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
         }
 
         // ==================== EKSPOR EXCEL (.XLSX) ====================
@@ -1423,7 +1628,7 @@
             showToast('File Excel berhasil diunduh!');
         }
 
-        // ==================== EKSPOR PDF (.PDF + GABUNG LAMPIRAN PDF) ====================
+        // ==================== EKSPOR PDF (.PDF MARGIN PROPORSIONAL & ANTI-TERPOTONG) ====================
 
         async function exportToPDF() {
             if (typeof html2pdf === 'undefined') {
@@ -1437,49 +1642,57 @@
             const safeDate = hariTanggal.replace(/[^a-zA-Z0-9]/g, '_').replace(/_+/g, '_').replace(/^_+|_+$/g, '');
             const fileName = `Notula_Rapat_KUA_${safeDate}.pdf`;
 
-            // Buat salinan bersih di luar kontainer scroll agar sisi kanan tidak pernah terpotong
+            // Lebar A4 (210mm) dikurangi margin kiri 18mm & kanan 18mm = 174mm (~658px pada 96dpi)
+            const PRINTABLE_WIDTH_PX = 658;
+
             const exportWrapper = document.createElement('div');
             exportWrapper.style.position = 'fixed';
             exportWrapper.style.left = '0';
             exportWrapper.style.top = '0';
-            exportWrapper.style.width = '700px';
+            exportWrapper.style.width = PRINTABLE_WIDTH_PX + 'px';
             exportWrapper.style.backgroundColor = '#ffffff';
             exportWrapper.style.zIndex = '-9999';
             exportWrapper.style.pointerEvents = 'none';
 
             const cloneEl = sourceEl.cloneNode(true);
             cloneEl.removeAttribute('id');
-            cloneEl.style.width = '700px';
-            cloneEl.style.maxWidth = '700px';
+            cloneEl.style.width = PRINTABLE_WIDTH_PX + 'px';
+            cloneEl.style.maxWidth = PRINTABLE_WIDTH_PX + 'px';
             cloneEl.style.minHeight = 'auto';
             cloneEl.style.margin = '0';
             cloneEl.style.padding = '0';
             cloneEl.style.boxShadow = 'none';
 
-            // Pastikan garis atas pemisah lampiran dihilangkan pada hasil PDF agar bersih
-            cloneEl.querySelectorAll('.border-dashed').forEach(el => {
-                el.classList.remove('border-t', 'border-dashed', 'border-gray-400', 'pt-2');
+            // Hapus jarak & garis pemisah pratinjau agar halaman lampiran dimulai rapat di atas halaman baru
+            cloneEl.querySelectorAll('.preview-att-divider').forEach(el => {
+                el.classList.remove('mt-6', 'pt-4', 'border-t', 'border-dashed', 'border-gray-400');
+                el.style.marginTop = '0';
+                el.style.paddingTop = '0';
             });
 
             exportWrapper.appendChild(cloneEl);
             document.body.appendChild(exportWrapper);
 
             const opt = {
-                margin: [12, 12, 12, 12],
+                margin: [18, 18, 18, 18], // Margin resmi 1.8 cm (Atas, Kiri, Bawah, Kanan)
                 filename: fileName,
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: {
                     scale: 2,
                     useCORS: true,
-                    width: 700,
-                    windowWidth: 1200,
+                    width: PRINTABLE_WIDTH_PX,
+                    windowWidth: 1024,
                     x: 0,
                     y: 0,
                     scrollX: 0,
                     scrollY: 0
                 },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                pagebreak: { mode: ['css', 'legacy'] }
+                pagebreak: {
+                    mode: ['css', 'legacy'],
+                    before: '.pdf-page-break',
+                    avoid: ['tr', '.avoid-break']
+                }
             };
 
             try {
